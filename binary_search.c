@@ -1,36 +1,26 @@
 #include<stdio.h>
 
-void displayArr(int arr[], int size)
+int binarySearch(int array[], int size, int value)
 {
-    for(int i = 0; i < size; i++)
-    {
-        printf("%d ", arr[i]);
-    }
-}
 
-int searchBinary(int arr[], int size, int element)
-{
-    int low = 0, high = size - 1;
-    int mid = (low + high) / 2;
-    for (int i = 0; i < size/2; i++)
+    int low = 0;
+    int high = size - 1;
+    int mid;
+
+    while(low <= high)
     {
-        if (element == arr[mid])
+        mid = (low + high) / 2;
+        if(array[mid] == value)
         {
             return mid;
         }
-        if (element < arr[mid])
+        if(array[mid] > value)
         {
-            printf("\nelement smaller than mid value\n");
-            high = mid - 1;
-            mid = (low + high) / 2;
-            continue;
+            high = mid+1;
         }
-        if (element > arr[mid])
+        if(array[mid] < value)
         {
-            printf("\nelement bigger than mid value\n");
-            low = mid + 1;
-            mid = (low + high) / 2;
-            continue;
+            low = mid-1;
         }
     }
     return -1;
@@ -38,18 +28,18 @@ int searchBinary(int arr[], int size, int element)
 
 int main()
 {
-    int arr[] = {2, 8, 14, 32, 66, 100, 104, 203, 400};
-    int size = sizeof(arr) / sizeof(int);
-    int element = 500, found = -1;
-    displayArr(arr, size);
-    found = searchBinary(arr, size, element);
-    if (found != -1)
+    int arr[] = {22, 45, 71, 109, 115, 127, 135};
+    int element = 71;
+    int size = sizeof(arr)/sizeof(int);
+
+    int position = binarySearch(arr, size, element);
+    if(position != -1)
     {
-        printf("\nelement found at index %d\n", found);
+        printf("\nelement found at position: %d", position);
     }
     else
     {
-        printf("\nelement NOT found\n");
+        printf("\nelement not found");
     }
-    return 1;
+    return 0;
 }
