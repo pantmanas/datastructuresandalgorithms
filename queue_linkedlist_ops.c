@@ -7,7 +7,7 @@ struct Node
     struct Node *next;
 };
 
-
+//manas
 
 void enqueue(struct Node *r, int x)
 {
