@@ -40,41 +40,6 @@ int partition(int arr[], int low, int high)
     return j;
 }
 
-/*
-int partition2(int arr[], int low, int high)
-{
-    int pivot = arr[low];
-    int i = low;
-    int j = high;
-    int temp;
-
-    do
-    {
-        while(arr[i] > pivot)
-        {
-            i++;
-        }
-
-        while(arr[j] <= pivot)
-        {
-            j--;
-        }
-
-        temp = arr[i];
-        arr[i] = arr[j];
-        arr[j] = temp;
-
-    } while (j > i);
-
-    temp = arr[low];
-    arr[low] = arr[j];
-    arr[j] = temp;
-    printf("\n\nmidsort array status\n");
-    printArray(arr, 10);
-    printf("pivot position: %d, element fixed: %d", j, arr[j]);
-    return j;
-} */
-
 int * quickSort(int arr[], int low, int high)
 {
     if(low < high)
@@ -87,7 +52,6 @@ int * quickSort(int arr[], int low, int high)
     return arr;
 }
 
-
 int main()
 {
     int arr[] = {10, 80, 30, 90, 40, 50, 70};
@@ -98,14 +62,12 @@ int main()
 
     printf("array before sorting\n");
     printArray(arr, n);
-
     
     int *output;
     output = quickSort(arr, low, high);
 
     printf("\n\narray after sorting\n");
     printArray(output, n);
-
 
     return 0;
 }
